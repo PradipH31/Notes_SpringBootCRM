@@ -1,0 +1,49 @@
+<div th:replace="shared/header"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <a href="/enquiry/status/add" class="btn btn-primary btn-xs">
+                    <span class="glyphicon glyphicon-plus" title="Add Enquiry Status"></span>
+                </a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="record:${records}">
+                        <td th:text="${record.id}"></td>
+                        <td th:text="${record.name}"></td>
+                        <td th:text="${record.color}" th:style="'background:'+${record.color}"></td>
+                        <td>
+                            <span th:if="${record.status}">
+                                <label class="label label-success">Active</label>
+                            </span>
+                            <span th:unless="${record.status}">
+                                <label class="label label-danger">Inactive</label>
+                            </span>
+                        </td>
+                        <td>
+                            <a th:href="@{'/enquiry/status/edit/'+${record.id}}" class="btn btn-success btn-xs">
+                                <span class="glyphicon glyphicon-pencil" title="Edit Enquiry Status"></span>
+                            </a>
+                            <a th:href="@{'/enquiry/status/delete/'+${record.id}}" class="btn btn-danger btn-xs">
+                                <span class="glyphicon glyphicon-trash" title="Delete Enquiry Status"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </div>-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
+<div th:replace="shared/footer"></div>

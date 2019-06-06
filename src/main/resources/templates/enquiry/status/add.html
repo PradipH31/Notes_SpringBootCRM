@@ -1,0 +1,35 @@
+<div th:replace="shared/header"></div>
+<!-- general form elements -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Add Enquiry Status</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form" method="post" action="/enquiry/status">
+        <div class="box-body">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter enquiry status name">
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" class="form-control" id="color" name="color" placeholder="Enter enquiry status color">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="status">Active
+                </label>
+            </div>
+        </div>
+        <!-- /.box-body -->
+
+        <div class="box-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" name="addmore" class="btn btn-success">Save & Continue Adding</button>
+            <a href="/enquiry/status" class="btn btn-danger">Back</a>
+        </div>
+    </form>
+</div>
+<!-- /.box -->
+<div th:replace="shared/footer"></div>
