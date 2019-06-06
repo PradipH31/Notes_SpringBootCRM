@@ -1,1 +1,6 @@
 <h1>Hello <span th:text="${name}"></span></h1>
+<ul>
+    <li th:each="source: ${sources}">
+        <span th:text="${source.name}" th:style="'background:'+${source.color}"></span>
+    </li>
+</ul>
