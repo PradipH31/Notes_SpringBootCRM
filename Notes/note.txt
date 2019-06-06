@@ -7,3 +7,4 @@ parent:
 	
 Dependencies:
 	spring-boot-starter-web(org.springframework.boot)
+	spring-boot-devtools(org.springframework.boot)
