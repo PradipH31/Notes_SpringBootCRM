@@ -30,10 +30,10 @@
                             </span>
                         </td>
                         <td>
-                            <a th:href="" class="btn btn-success btn-xs">
+                            <a th:href="@{'/enquiry/sources/edit/'+${record.id}}" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-pencil" title="Edit Enquiry Source"></span>
                             </a>
-                            <a th:href="" class="btn btn-danger btn-xs">
+                            <a th:href="@{'/enquiry/sources/delete/'+${record.id}}" class="btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-trash" title="Delete Enquiry Source"></span>
                             </a>
                         </td>

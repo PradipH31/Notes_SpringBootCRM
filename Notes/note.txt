@@ -22,6 +22,11 @@ Looping,style with thymeleaf:
 Including files(all absolute paths templates/)	
 <div th:replace="shared/header"></div>
 
+For add(links in same domain)
+<a href="/enquiry/sources/add" class="btn btn-primary btn-xs">
+    <span class="glyphicon glyphicon-plus" title="Add Enquiry Source"></span>
+</a>
+
 <td>
     <span th:if="${record.status}">
          <label class="label label-success">Active</label>
@@ -29,6 +34,15 @@ Including files(all absolute paths templates/)
     <span th:unless="${record.status}">
         <label class="label label-danger">Inactive</label>
     </span>
+</td>
+
+<td>
+    <a th:href="@{'/enquiry/sources/edit/'+${record.id}}" class="btn btn-success btn-xs">
+        <span class="glyphicon glyphicon-pencil" title="Edit Enquiry Source"></span>
+    </a>
+    <a th:href="@{'/enquiry/sources/delete/'+${record.id}}" class="btn btn-danger btn-xs">
+        <span class="glyphicon glyphicon-trash" title="Delete Enquiry Source"></span>
+    </a>
 </td>
 
 ModelAttribute annotation is used to tell the server that the function will be using Model(just like in requestMapping).
