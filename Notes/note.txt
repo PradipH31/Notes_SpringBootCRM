@@ -51,3 +51,20 @@ For add(root of the site + /enquiry/...)
 
 ModelAttribute annotation is used to tell the server that the function will be using Model(just like in requestMapping).
 However, such functions do not require requests to be made
+
+
+
+
+
+Creating class from tables:
+New->Persistence->Entity Classes from Database
+New Data Source
+JNDI Name:CRM
+New Database Connection
+Driver: MySQL
+Databas: crm
+Choose table from left side(Events) Add
+Change className(Event)
+Uncheck all options
+Collection Type:list
+Uncheck all options
