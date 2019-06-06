@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -44,9 +45,13 @@ public class EnquirySourceController extends SiteController {
     }
 
     @PostMapping(value = "/add")
-    public String save(EnquirySource model) {
+    public String save(EnquirySource model, @RequestParam(value = "addmore", required = false) String addMore) {
         repository.save(model);
-        return "redirect:/enquiry/sources?success";
+        if (addMore == null) {
+            return "redirect:/enquiry/sources?success";
+        } else {
+            return "redirect:/enquiry/sources/add?success";
+        }
     }
 
     @GetMapping(value = "/edit/{id}")
@@ -54,10 +59,10 @@ public class EnquirySourceController extends SiteController {
         model.addAttribute("record", repository.getOne(id));
         return "enquiry/source/edit";
     }
-    
+
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
-        EnquirySource source=repository.getOne(id);
+        EnquirySource source = repository.getOne(id);
         source.setDeleted(true);
         source.setDeletedDate(new Date());
         repository.save(source);
