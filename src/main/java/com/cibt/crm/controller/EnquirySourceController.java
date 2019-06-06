@@ -33,4 +33,9 @@ public class EnquirySourceController extends SiteController {
         model.addAttribute("records", repository.findAll());
         return "enquiry/source/index";
     }
+    
+    @GetMapping(value = "/add")
+    public String add() {
+        return "enquiry/source/add";
+    }
 }
