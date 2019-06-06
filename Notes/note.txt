@@ -22,7 +22,7 @@ Looping,style with thymeleaf:
 Including files(all absolute paths templates/)	
 <div th:replace="shared/header"></div>
 
-For add(links in same domain)
+For add(root of the site + /enquiry/...)
 <a href="/enquiry/sources/add" class="btn btn-primary btn-xs">
     <span class="glyphicon glyphicon-plus" title="Add Enquiry Source"></span>
 </a>
@@ -44,6 +44,10 @@ For add(links in same domain)
         <span class="glyphicon glyphicon-trash" title="Delete Enquiry Source"></span>
     </a>
 </td>
+
+<input th:value="${record.name}" type="text" class="form-control" id="name" name="name" placeholder="Enter enquiry source name">
+
+<input th:checked="${record.status}" type="checkbox" name="status">Active
 
 ModelAttribute annotation is used to tell the server that the function will be using Model(just like in requestMapping).
 However, such functions do not require requests to be made
