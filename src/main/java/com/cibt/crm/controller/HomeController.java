@@ -5,10 +5,21 @@
  */
 package com.cibt.crm.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
  *
  * @author HP B&O
  */
+@Controller
+@RequestMapping(value = "/")
 public class HomeController {
-    
+
+    @GetMapping
+    public @ResponseBody String index() {
+        return "Hello";
+    }
 }
