@@ -34,7 +34,7 @@ public class EnquirySourceController extends SiteController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("records", repository.findAll());
+        model.addAttribute("records", repository.getEnquirySources());
         return "enquiry/source/index";
     }
 
