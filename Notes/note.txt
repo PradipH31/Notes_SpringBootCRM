@@ -18,3 +18,6 @@ Looping,style with thymeleaf:
 <li th:each="source: ${sources}">
         <span th:text="${source.name}" th:style="'background:'+${source.color}"></span>
     </li>
+
+Including files(all absolute paths templates/)	
+<div th:replace="shared/header"></div>
