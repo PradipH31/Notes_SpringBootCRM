@@ -4,6 +4,7 @@
     Author     : HP B&O
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,4 +15,9 @@
     <body>
         <h1>Hello ${name}!</h1>
     </body>
+    <ul>
+        <c:forEach var="source" items="${sources}">
+            <li>${source.name}</li>
+        </c:forEach>
+    </ul>
 </html>
