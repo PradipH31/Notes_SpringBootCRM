@@ -8,3 +8,5 @@ parent:
 Dependencies:
 	spring-boot-starter-web(org.springframework.boot)
 	spring-boot-devtools(org.springframework.boot)
+	spring-boot-starter-data-jdbc(org.springframework.boot)
+	mysql-connector-java(mysql)
