@@ -22,5 +22,14 @@ Looping,style with thymeleaf:
 Including files(all absolute paths templates/)	
 <div th:replace="shared/header"></div>
 
+<td>
+    <span th:if="${record.status}">
+         <label class="label label-success">Active</label>
+     </span>
+    <span th:unless="${record.status}">
+        <label class="label label-danger">Inactive</label>
+    </span>
+</td>
+
 ModelAttribute annotation is used to tell the server that the function will be using Model(just like in requestMapping).
 However, such functions do not require requests to be made
