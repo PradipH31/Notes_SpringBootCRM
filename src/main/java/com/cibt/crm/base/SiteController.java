@@ -5,10 +5,18 @@
  */
 package com.cibt.crm.base;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 /**
  *
  * @author HP B&O
  */
 public abstract class SiteController {
+    protected String header;
     
+    @ModelAttribute
+    public void setHeader(Model model){
+        model.addAttribute("header", header);
+    }
 }

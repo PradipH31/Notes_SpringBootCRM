@@ -21,3 +21,6 @@ Looping,style with thymeleaf:
 
 Including files(all absolute paths templates/)	
 <div th:replace="shared/header"></div>
+
+ModelAttribute annotation is used to tell the server that the function will be using Model(just like in requestMapping).
+However, such functions do not require requests to be made

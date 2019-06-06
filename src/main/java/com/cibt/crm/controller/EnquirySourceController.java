@@ -5,6 +5,7 @@
  */
 package com.cibt.crm.controller;
 
+import com.cibt.crm.base.SiteController;
 import com.cibt.crm.repository.EnquirySourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = "/enquiry/sources")
-public class EnquirySourceController {
+public class EnquirySourceController extends SiteController {
+
+    public EnquirySourceController() {
+        this.header = "Enquiry Source";
+    }
 
     @Autowired
     private EnquirySourceRepository repository;
@@ -26,6 +31,6 @@ public class EnquirySourceController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("records", repository.findAll());
-        return "equiry/source/index";
+        return "enquiry/source/index";
     }
 }

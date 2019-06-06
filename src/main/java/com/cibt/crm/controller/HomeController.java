@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = "/")
-public class HomeController extends SiteController{
+public class HomeController extends SiteController {
+
+    public HomeController() {
+        this.header="Dashboard";
+    }
 
     @GetMapping
     public String index(Model model) {
