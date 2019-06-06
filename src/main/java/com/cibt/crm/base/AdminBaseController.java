@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -36,5 +38,14 @@ public abstract class AdminBaseController<T> extends SiteController {
     public String edit(@PathVariable("id") long id, Model model) {
         model.addAttribute("record", repository.getOne(id));
         return viewPath + "/edit";
+    }
+
+    @PostMapping
+    public String save(T model, @RequestParam(value = "addmore", required = false) String addMore) {
+        repository.save(model);
+        if (addMore == null) {
+            return "redirect:" + redirectURI + "?success";
+        }
+        return "redirect:" + redirectURI + "/add?success";
     }
 }

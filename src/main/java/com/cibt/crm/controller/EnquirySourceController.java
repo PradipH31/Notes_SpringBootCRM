@@ -11,12 +11,9 @@ import com.cibt.crm.repository.EnquirySourceRepository;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -34,16 +31,6 @@ public class EnquirySourceController extends AdminBaseController<EnquirySource> 
 
     @Autowired
     private EnquirySourceRepository repository;
-
-    @PostMapping()
-    public String save(EnquirySource model, @RequestParam(value = "addmore", required = false) String addMore) {
-        repository.save(model);
-        if (addMore == null) {
-            return "redirect:/enquiry/sources?success";
-        } else {
-            return "redirect:/enquiry/sources/add?success";
-        }
-    }
 
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
