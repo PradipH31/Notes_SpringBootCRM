@@ -1,0 +1,3 @@
+Maven -> Web Application
+(No server selected)
+Spring Boot has tomcat server
