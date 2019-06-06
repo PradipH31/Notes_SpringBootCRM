@@ -5,7 +5,7 @@
  */
 package com.cibt.crm.controller;
 
-import com.cibt.crm.base.SiteController;
+import com.cibt.crm.base.AdminBaseController;
 import com.cibt.crm.entity.EnquirySource;
 import com.cibt.crm.repository.EnquirySourceRepository;
 import java.util.Date;
@@ -24,27 +24,18 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping(value = "/enquiry/sources")
-public class EnquirySourceController extends SiteController {
+public class EnquirySourceController extends AdminBaseController<EnquirySource> {
 
     public EnquirySourceController() {
         this.header = "Enquiry Source";
+        this.viewPath = "enquiry/source";
+        this.redirectURI = "/enquiry/sources";
     }
 
     @Autowired
     private EnquirySourceRepository repository;
 
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("records", repository.getEnquirySources());
-        return "enquiry/source/index";
-    }
-
-    @GetMapping(value = "/add")
-    public String add() {
-        return "enquiry/source/add";
-    }
-
-    @PostMapping(value = "/add")
+    @PostMapping()
     public String save(EnquirySource model, @RequestParam(value = "addmore", required = false) String addMore) {
         repository.save(model);
         if (addMore == null) {

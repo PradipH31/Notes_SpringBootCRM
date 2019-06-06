@@ -5,10 +5,29 @@
  */
 package com.cibt.crm.base;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
  *
  * @author HP B&O
  */
-public abstract class AdminBaseController extends SiteController{
-    
+public abstract class AdminBaseController<T> extends SiteController {
+
+    @Autowired
+    protected JpaRepository<T, Long> repository;
+    protected String viewPath, redirectURI;
+
+    @GetMapping
+    public String index(Model model) {
+        model.addAttribute("records", repository.findAll());
+        return viewPath + "/index";
+    }
+
+    @GetMapping(value = "/add")
+    public String add() {
+        return viewPath + "/add";
+    }
 }

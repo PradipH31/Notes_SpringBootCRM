@@ -5,6 +5,7 @@
  */
 package com.cibt.crm.controller;
 
+import com.cibt.crm.base.AdminBaseController;
 import com.cibt.crm.base.SiteController;
 import com.cibt.crm.entity.EnquiryStatus;
 import com.cibt.crm.repository.EnquiryStatusRepository;
@@ -24,27 +25,18 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping(value = "/enquiry/status")
-public class EnquiryStatusController extends SiteController {
+public class EnquiryStatusController extends AdminBaseController<EnquiryStatus> {
 
     public EnquiryStatusController() {
         this.header = "Enquiry Status";
+        this.viewPath = "enquiry/status";
+        this.redirectURI = "/enquiry/status";;
     }
 
     @Autowired
     private EnquiryStatusRepository repository;
 
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("records", repository.getAll());
-        return "enquiry/status/index";
-    }
-
-    @GetMapping(value = "/add")
-    public String add() {
-        return "enquiry/status/add";
-    }
-
-    @PostMapping(value = "/add")
+    @PostMapping()
     public String save(EnquiryStatus model, @RequestParam(value = "addmore", required = false) String addMore) {
         repository.save(model);
         if (addMore == null) {
