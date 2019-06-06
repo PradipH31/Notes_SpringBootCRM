@@ -54,6 +54,10 @@ However, such functions do not require requests to be made
 
 
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
+
 
 
 Creating class from tables:

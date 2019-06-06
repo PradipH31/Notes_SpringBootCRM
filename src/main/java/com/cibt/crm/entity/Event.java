@@ -7,7 +7,6 @@ package com.cibt.crm.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -34,36 +32,29 @@ public class Event implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Size(max = 255)
     @Column(name = "event_name")
     private String eventName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "start_date")
     @Temporal(TemporalType.DATE)
     private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
     private Date endDate;
+    @Column(name = "created_date", insertable = false, updatable = false)
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
     @Column(name = "status")
     private Boolean status;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "created_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
 
     public Event() {
     }
 
     public Event(Long id) {
         this.id = id;
-    }
-
-    public Event(Long id, Date createdDate) {
-        this.id = id;
-        this.createdDate = createdDate;
     }
 
     public Long getId() {
@@ -106,14 +97,6 @@ public class Event implements Serializable {
         this.status = status;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -134,9 +117,17 @@ public class Event implements Serializable {
         return true;
     }
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public String toString() {
         return "com.cibt.crm.entity.Event[ id=" + id + " ]";
     }
-    
+
 }
