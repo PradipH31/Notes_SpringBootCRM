@@ -48,4 +48,11 @@ public abstract class AdminBaseController<T> extends SiteController {
         }
         return "redirect:" + redirectURI + "/add?success";
     }
+
+    @GetMapping(value = "/delete/{id}")
+    public String delete(@PathVariable("id") long id) {
+        T model = repository.getOne(id);
+        repository.delete(model);
+        return "redirect:" + redirectURI + "?success";
+    }
 }
