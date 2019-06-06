@@ -1,3 +1,9 @@
 Maven -> Web Application
 (No server selected)
 Spring Boot has tomcat server
+
+parent:
+	spring-boot-starter-parent(org.springframework.boot)2.1.5
+	
+Dependencies:
+	spring-boot-starter-web(org.springframework.boot)
