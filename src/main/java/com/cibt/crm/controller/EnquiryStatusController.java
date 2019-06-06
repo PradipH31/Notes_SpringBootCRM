@@ -45,13 +45,7 @@ public class EnquiryStatusController extends AdminBaseController<EnquiryStatus> 
             return "redirect:/enquiry/status/add?success";
         }
     }
-
-    @GetMapping(value = "/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("record", repository.getOne(id));
-        return "enquiry/status/edit";
-    }
-
+    
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         EnquiryStatus status = repository.getOne(id);

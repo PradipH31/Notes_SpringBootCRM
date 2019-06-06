@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -29,5 +30,11 @@ public abstract class AdminBaseController<T> extends SiteController {
     @GetMapping(value = "/add")
     public String add() {
         return viewPath + "/add";
+    }
+
+    @GetMapping(value = "/edit/{id}")
+    public String edit(@PathVariable("id") long id, Model model) {
+        model.addAttribute("record", repository.getOne(id));
+        return viewPath + "/edit";
     }
 }

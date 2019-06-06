@@ -45,12 +45,6 @@ public class EnquirySourceController extends AdminBaseController<EnquirySource> 
         }
     }
 
-    @GetMapping(value = "/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("record", repository.getOne(id));
-        return "enquiry/source/edit";
-    }
-
     @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         EnquirySource source = repository.getOne(id);
